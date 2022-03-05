@@ -12,6 +12,13 @@ function App() {
           allPersons{
             name
           }
+          findPerson(name:"dave"){
+            address{
+              street
+              city
+            }
+            city
+          }
         }
       `})
     })
