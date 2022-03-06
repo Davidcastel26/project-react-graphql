@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 // import { ApolloClient, gql, useQuery } from 'apollo-client'
 import { gql, useQuery } from '@apollo/client'
+import Persons from './components/Persons'
 // import {} from '@apollo/client'
 
 const All_Persons = gql`
@@ -58,14 +59,7 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         {loading
           ? <p> Loading ... </p>
-          : (
-            <>
-              <p>Graphql & apollo!</p>
-              {
-                data && data.allPersons.map(p => p.name).join(', ')
-              }
-            </>
-          )
+          : <Persons persons={data?.allPersons} />
         }
       </header>
     </div>
@@ -73,3 +67,8 @@ const App = () => {
 }
 
 export default App
+
+
+/* {
+              data && data.allPersons.map(p => p.name).join(', ')
+            } */
