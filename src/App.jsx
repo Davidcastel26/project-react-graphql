@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import {qgl, useQuery} from '@apollo/client'
+// import { ApolloClient, gql, useQuery } from 'apollo-client'
+import { gql, useQuery } from '@apollo/client'
+// import {} from '@apollo/client'
 
 const All_Persons =gql`
   query{
@@ -18,10 +20,10 @@ const All_Persons =gql`
 `
 
 
-function App() {
+const App = () => {
   
-  const result = useQuery(All_Persons)
-  
+  // const result = useQuery(All_Persons)
+  const { data, error, loading } = useQuery(All_Persons)
 /*
   useEffect( () => {
     fetch('http://localhost:4000',{
@@ -47,7 +49,8 @@ function App() {
   })
   */
 
-  console.log(result);
+  console.log(data, loading);
+  if (error) return <span style='color: red'> {error} </span>
 
   return (
     <div className="App">
