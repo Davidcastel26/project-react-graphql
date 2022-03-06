@@ -1,9 +1,28 @@
 import { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import {qgl, useQuery} from '@apollo/client'
+
+const All_Persons =gql`
+  query{
+    allPersons{
+      id
+      name
+      phone
+      address{
+        street
+        city
+      }
+    }
+  }
+`
+
 
 function App() {
   
+  const result = useQuery(All_Persons)
+  
+/*
   useEffect( () => {
     fetch('http://localhost:4000',{
       method:'POST',
@@ -26,6 +45,9 @@ function App() {
     .then(res=> res.json())
     .then(res => {console.log(res.data)})
   })
+  */
+
+  console.log(result);
 
   return (
     <div className="App">
