@@ -5,7 +5,7 @@ import './App.css'
 import { gql, useQuery } from '@apollo/client'
 // import {} from '@apollo/client'
 
-const All_Persons =gql`
+const All_Persons = gql`
   query{
     allPersons{
       id
@@ -21,33 +21,33 @@ const All_Persons =gql`
 
 
 const App = () => {
-  
+
   // const result = useQuery(All_Persons)
   const { data, error, loading } = useQuery(All_Persons)
-/*
-  useEffect( () => {
-    fetch('http://localhost:4000',{
-      method:'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({query: `
-        query{
-          allPersons{
-            name
-          }
-          findPerson(name:"dave"){
-            address{
-              street
+  /*
+    useEffect( () => {
+      fetch('http://localhost:4000',{
+        method:'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({query: `
+          query{
+            allPersons{
+              name
+            }
+            findPerson(name:"dave"){
+              address{
+                street
+                city
+              }
               city
             }
-            city
           }
-        }
-      `})
+        `})
+      })
+      .then(res=> res.json())
+      .then(res => {console.log(res.data)})
     })
-    .then(res=> res.json())
-    .then(res => {console.log(res.data)})
-  })
-  */
+    */
 
   console.log(data, loading);
   if (error) return <span style='color: red'> {error} </span>
@@ -56,7 +56,17 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Graphql & apollo!</p>
+        {loading
+          ? <p> Loading ... </p>
+          : (
+            <>
+              <p>Graphql & apollo!</p>
+              {
+                data && data.allPersons.map(p => p.name).join(', ')
+              }
+            </>
+          )
+        }
       </header>
     </div>
   )
