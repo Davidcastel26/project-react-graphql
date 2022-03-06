@@ -26,10 +26,12 @@ const query =gql`
   }
 `
 
+/* query to check if it is working
 client.query({query})
   .then(res => {
     console.log(res.data);
   })
+*/
 
 ReactDOM.render(
   <React.StrictMode>
