@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import {ApolloClient, HttpLink, gql, InMemoryCache} from '@apollo/client'
+import {ApolloClient, HttpLink, gql, InMemoryCache, ApolloProvider} from '@apollo/client'
 
 const client = new ApolloClient({
   // if we are not using the catche we will get an error 
@@ -12,19 +12,6 @@ const client = new ApolloClient({
   })
 })
 
-const query =gql`
-  query{
-    allPersons{
-      id
-      name
-      phone
-      address{
-        street
-        city
-      }
-    }
-  }
-`
 
 /* query to check if it is working
 client.query({query})
@@ -34,8 +21,10 @@ client.query({query})
 */
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+  {/* </React.StrictMode>, */}
+  </ApolloProvider>,
   document.getElementById('root')
 )
