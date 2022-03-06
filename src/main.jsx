@@ -7,6 +7,7 @@ import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider} from '@apollo/cl
 
 const client = new ApolloClient({
   // if we are not using the catche we will get an error 
+  connectToDevTools: true,
   cache: new InMemoryCache(),
   link: new HttpLink({
   uri: 'http://localhost:4000/' 
