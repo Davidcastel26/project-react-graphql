@@ -4,6 +4,7 @@ import './App.css'
 // import { ApolloClient, gql, useQuery } from 'apollo-client'
 import { gql, useQuery } from '@apollo/client'
 import Persons from './components/Persons'
+import PersonForm from './components/PersonForm'
 // import {} from '@apollo/client'
 
 const All_Persons = gql`
@@ -62,6 +63,7 @@ const App = () => {
           : <Persons persons={data?.allPersons} />
         }
       </header>
+      <PersonForm />
     </div>
   )
 }
