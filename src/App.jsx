@@ -62,8 +62,8 @@ const App = () => {
           ? <p> Loading ... </p>
           : <Persons persons={data?.allPersons} />
         }
+        <PersonForm />
       </header>
-      <PersonForm />
     </div>
   )
 }

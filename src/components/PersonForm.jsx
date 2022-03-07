@@ -21,8 +21,12 @@ const PersonForm = () => {
     const [street, setStreet] = useState('')
     const [city, setCIty] = useState('')
 
+    const [createPerson] = useMutation(CREATE_PERSON)
+
     const handleSubmit = e => {
         e.preventDefault()
+
+        createPerson({variables:{ name, phone, street, city} })
 
         setName('')
         setPhone('')
@@ -34,11 +38,12 @@ const PersonForm = () => {
         <div>
             <h2>Create a new Human</h2>
             <form onSubmit={handleSubmit}>
-            </form>
                 <input placeholder='Name Here!' type="text" value={name} onChange={evt => setName(evt.target.value)} />
                 <input placeholder='Phone Here!' type="text" value={phone} onChange={evt => setPhone(evt.target.value)} />
                 <input placeholder='Street Here!' type="text" value={street} onChange={evt => setStreet(evt.target.value)} />
                 <input placeholder='City Here!' type="text" value={city} onChange={evt => setCIty(evt.target.value)} />
+                <button onSubmit={handleSubmit}> Add person</button>
+            </form>
         </div>
     )
 }
