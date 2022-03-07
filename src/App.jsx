@@ -25,7 +25,7 @@ const All_Persons = gql`
 const App = () => {
 
   // const result = useQuery(All_Persons)
-  const { data, error, loading } = useQuery(All_Persons)
+  const { data, error, loading } = useQuery(All_Persons /* , {pollInterval: 2000} */ )
   /*
     useEffect( () => {
       fetch('http://localhost:4000',{
