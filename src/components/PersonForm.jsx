@@ -21,12 +21,12 @@ const PersonForm = () => {
     const [street, setStreet] = useState('')
     const [city, setCIty] = useState('')
 
-    const [createPerson] = useMutation(CREATE_PERSON)
+    const [createPersonHere] = useMutation(CREATE_PERSON)
 
     const handleSubmit = e => {
         e.preventDefault()
 
-        createPerson({variables:{ name, phone, street, city} })
+        createPersonHere({variables:{ name, phone, street, city} })
 
         setName('')
         setPhone('')
